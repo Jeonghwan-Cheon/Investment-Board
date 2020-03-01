@@ -53,10 +53,10 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#yield">Yield</a>
+                        <a href="#earning">Earning</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Portfolio</a>
+                        <a href="#analysis">Analysis</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#information">Information</a>
@@ -84,37 +84,49 @@
         </div>
     </header>
 
-    <!-- Yield Section -->
-    <section id="yield">
+    <!-- Earning Section -->
+    <section id="earning">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Yield</h2>
+                    <h2>Earning</h2>
                     <hr class="star-primary">
                 </div>
             </div>
             <div class="row">
-                <canvas id="myChart"></canvas>
-                <script>
-                var ctx = document.getElementById('myChart').getContext('2d');
-                var chart = new Chart(ctx, {
-                    // The type of chart we want to create
-                    type: 'line',
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p> 74% </p>  
+                    <p.small> 74% </p.small>   
+                    <p.huge> 74% </p.huge>                
+                </div>
+                <div class="col-lg-4">
+                    <p> My name is my name is. My name is my name is. My name is my name is. My name is my name is. My name is my name is. My name is my name is. My name is my name is. My name is my name is. </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center"></div>
+                    <canvas id="myChart"></canvas>
+                    <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
 
-                    // The data for our dataset
-                    data: {
-                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                        datasets: [{
-                            label: 'KODEX kosdaq150',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: [0, 10, 5, 2, 20, 30, 45]
-                        }]
-                    },
+                        // The data for our dataset
+                        data: {
+                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                            datasets: [{
+                                label: 'KODEX kosdaq150',
+                                borderColor: 'rgb(255, 99, 132)',
+                                data: [0, 10, 5, 2, 20, 30, 45]
+                            }]
+                        },
 
-                    // Configuration options go here
-                    options: {}
-                });
-                </script> 
+                        // Configuration options go here
+                        options: {}
+                    });
+                    </script> 
+                </div>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
@@ -127,12 +139,12 @@
         </div>
 </section>
 
-    <!-- Portfolio Grid Section -->
-    <section class="success" id="portfolio">
+    <!-- Analysis Grid Section -->
+    <section class="success" id="analysis">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Portfolio</h2>
+                    <h2>Analysis</h2>
                     <hr class="star-light">
                 </div>
             </div>
