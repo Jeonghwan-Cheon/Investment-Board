@@ -268,8 +268,71 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-lg-12 text-center">
+                    <canvas id="Model1"></canvas>
+                    <p> <br> </p> 
+                    <script>
+                    var ctx = document.getElementById('Model1').getContext('2d');
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                            datasets: [{
+                                label: 'Balance',
+                                borderColor: 'rgb(255, 99, 132)',
+                                data: [0, 10, 5, 2, 20, 30, 45]
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            legend: {
+                                labels: {
+                                    fontColor: 'white'
+                                }
+                            }, scales: {
+                                xAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        fontColor:'white',
+                                    },
+                                    ticks: {
+                                    fontColor: "white",
+                                    },
+                                    gridLines: {
+                                        color:'white'
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        fontColor: 'white',
+                                    },
+                                    ticks: {
+                                        fontColor: "white",
+                                    },
+                                    gridLines: {
+                                        color:'white'
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    </script> 
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-4 text-center">
-                    <p> KOSDAQ 150 EFT </p>
+                    <p> - KOSDAQ 150 EFT - </p>
+                    <h2> 7% </h2>
+                    <p> per year </p>
+                    <p> Rate of Return (Estimation) </p>
+                    <p> <br> </p> 
                     <canvas id="ETF-KOSDAQ" height="300px"></canvas>
                     <p> <br> </p> 
                     <script>
@@ -331,7 +394,11 @@
                     </script> 
                 </div>
                 <div class="col-sm-4 text-center">
-                    <p> Bio-industry ETF </p>
+                    <p> - Bio-industry ETF - </p>
+                    <h2> 32% </h2>
+                    <p> per year </p>
+                    <p> Rate of Return (Estimation) </p>
+                    <p> <br> </p> 
                     <canvas id="ETF-Bio" height="300px"></canvas>
                     <p> <br> </p> 
                     <script>
@@ -393,7 +460,11 @@
                     </script>
                 </div>
                 <div class="col-sm-4 text-center">
-                    <p> Semiconductor industry ETF </p>
+                    <p> - Semiconductor industry ETF - </p>
+                    <h2> 15% </h2>
+                    <p> per year </p>
+                    <p> Rate of Return (Estimation) </p>
+                    <p> <br> </p> 
                     <canvas id="ETF-SemiCon" height="300px"></canvas>
                     <p> <br> </p> 
                     <script>
@@ -421,7 +492,6 @@
                             legend: {
                                 labels: {
                                     fontColor: 'white',
-                                    display:false
                                 }
                             }, scales: {
                                 xAxes: [{
