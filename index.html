@@ -268,6 +268,195 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-sm-4 text-center">
+                    <p> KOSDAQ 150 EFT </p>
+                    <canvas id="ETF-KOSDAQ" height="300px"></canvas>
+                    <p> <br> </p> 
+                    <script>
+                    var ctx = document.getElementById('ETF-KOSDAQ').getContext('2d');
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                            datasets: [{
+                                label: 'Profit',
+                                borderColor: 'rgb(255, 99, 132)',
+                                data: [0, 10, 5, 2, 20, 30, 45]
+                            },{
+                                label: 'Index',
+                                borderColor: 'rgb(146, 207, 191)',
+                                data: [0, 7, 5, 3, 10, 17, 12]
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            legend: {
+                                labels: {
+                                    fontColor: 'white'
+                                }
+                            }, scales: {
+                                xAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        fontColor:'white',
+                                    },
+                                    ticks: {
+                                    fontColor: "white",
+                                    },
+                                    gridLines: {
+                                        color:'white'
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        fontColor: 'white',
+                                    },
+                                    ticks: {
+                                        fontColor: "white",
+                                    },
+                                    gridLines: {
+                                        color:'white'
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    </script> 
+                </div>
+                <div class="col-sm-4 text-center">
+                    <p> Bio-industry ETF </p>
+                    <canvas id="ETF-Bio" height="300px"></canvas>
+                    <p> <br> </p> 
+                    <script>
+                    var ctx = document.getElementById('ETF-Bio').getContext('2d');
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                            datasets: [{
+                                label: 'Profit',
+                                borderColor: 'rgb(255, 99, 132)',
+                                data: [0, 10, 5, 2, 20, 30, 45]
+                            },{
+                                label: 'Index',
+                                borderColor: 'rgb(146, 207, 191)',
+                                data: [0, 7, 5, 3, 10, 17, 12]
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            legend: {
+                                labels: {
+                                    fontColor: 'white'
+                                }
+                            }, scales: {
+                                xAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        fontColor:'white',
+                                    },
+                                    ticks: {
+                                    fontColor: "white",
+                                    },
+                                    gridLines: {
+                                        color:'white'
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        fontColor: 'white',
+                                    },
+                                    ticks: {
+                                        fontColor: "white",
+                                    },
+                                    gridLines: {
+                                        color:'white'
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    </script>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <p> Semiconductor industry ETF </p>
+                    <canvas id="ETF-SemiCon" height="300px"></canvas>
+                    <p> <br> </p> 
+                    <script>
+                    var ctx = document.getElementById('ETF-SemiCon').getContext('2d');
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                            datasets: [{
+                                label: 'Balance',
+                                borderColor: 'rgb(255, 99, 132)',
+                                data: [0, 10, 5, 2, 20, 30, 45]
+                            },{
+                                label: 'Strategic Model 1',
+                                borderColor: 'rgb(146, 207, 191)',
+                                data: [0, 7, 5, 3, 10, 17, 12]
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            legend: {
+                                labels: {
+                                    fontColor: 'white',
+                                    display:false
+                                }
+                            }, scales: {
+                                xAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        fontColor:'white',
+                                    },
+                                    ticks: {
+                                    fontColor: "white",
+                                    },
+                                    gridLines: {
+                                        color:'white'
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        fontColor: 'white',
+                                    },
+                                    ticks: {
+                                        fontColor: "white",
+                                    },
+                                    gridLines: {
+                                        color:'white'
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    </script>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-12 text-center">
                     <h1> · Strategic Model 2 · </h1>
                     <p> Search surging stocks and trend following </p>
