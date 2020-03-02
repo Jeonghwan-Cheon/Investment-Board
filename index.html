@@ -59,7 +59,7 @@
                         <a href="#analysis">Analysis</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#information">Information</a>
+                        <a href="#today">Today</a>
                     </li>
                 </ul>
             </div>
@@ -265,6 +265,21 @@
                 <div class="col-lg-12 text-center">
                     <h1> · Strategic Model 1 · </h1>
                     <p> ETF transactions using short-term ATR and long-term TTF </p>
+                    <p> <br> </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <h2> 32% </h2>
+                    <p> per year </p>
+                    <p> Rate of Return (Estimation) </p>  
+                    <p> <br> </p>           
+                </div>
+                <div class="col-lg-4 text-center">
+                    <h2> 630,257 </h2>
+                    <p> won </p>
+                    <p> Current Valuation </p>  
+                    <p> <br> </p> 
                 </div>
             </div>
             <div class="row">
@@ -526,21 +541,99 @@
                     </script>
                 </div>
             </div>
+            <div class-"row">
+                <p> <br> </p>
+                <p> <br> </p>
+            </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h1> · Strategic Model 2 · </h1>
                     <p> Search surging stocks and trend following </p>
+                    <p> <br> </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <h2> 121% </h2>
+                    <p> per year </p>
+                    <p> Rate of Return (Estimation) </p>  
+                    <p> <br> </p>           
+                </div>
+                <div class="col-lg-4 text-center">
+                    <h2> 1,130,257 </h2>
+                    <p> won </p>
+                    <p> Current Valuation </p>  
+                    <p> <br> </p> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <canvas id="Model2"></canvas>
+                    <p> <br> </p> 
+                    <script>
+                    var ctx = document.getElementById('Model2').getContext('2d');
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                            datasets: [{
+                                label: 'Balance',
+                                borderColor: 'rgb(255, 99, 132)',
+                                data: [0, 10, 5, 2, 20, 30, 45]
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            legend: {
+                                labels: {
+                                    fontColor: 'white'
+                                }
+                            }, scales: {
+                                xAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        fontColor:'white',
+                                    },
+                                    ticks: {
+                                    fontColor: "white",
+                                    },
+                                    gridLines: {
+                                        color:'white'
+                                    }
+                                }],
+                                yAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        fontColor: 'white',
+                                    },
+                                    ticks: {
+                                        fontColor: "white",
+                                    },
+                                    gridLines: {
+                                        color:'white'
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    </script> 
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Information Section -->
-    <section id="information">
+    <!-- Today Section -->
+    <section id="today">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Information</h2>
+                    <h2>Today</h2>
                     <hr class="star-primary">
                 </div>
             </div>
