@@ -248,11 +248,10 @@
                                     document.getElementById("m1retention".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(retention_data[i]);
                                     document.getElementById("m1result".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(profit_data[i]);
                                 }
-                                document.getElementById("m1result6").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(profit_data[0] + profit_data[1] + profit_data[2] + profit_data[3] + profit_data[4] + profit_data[5]);
-                                console.log(parseInt(profit_data[0]) + parseInt(profit_data[1]) + parseInt(profit_data[2]) + parseInt(profit_data[3]) + parseInt(profit_data[4]) + parseInt(profit_data[5]))
+                                var result6 = profit_data[0]*1+profit_data[1]*1+profit_data[2]*1+profit_data[3]*1+profit_data[4]*1;
+                                document.getElementById("m1result6").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(result6);
                             }
                         });
-                        console.log(temp);
                     </script>
                     <table border="0" bordercolor="gray" align="center" style="table-layout: auto; width:80%; height:250px">
                         <tr align="center" style="background:whitesmoke;">
@@ -343,9 +342,37 @@
                     <canvas id="myChart"></canvas>
                     <p> <br> </p> 
                     <script>
-                    var data = [],
-                        label_data = [],
+                    var label_data = [],
                         value_data = [];
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var chart1 = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+                            labels: label_data,
+                            datasets: [{
+                                label: 'KOSDAQ',
+                                borderColor: 'rgb(255, 99, 132)',
+                                data: value_data
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            // scales: {
+                            //     xAxes: [{
+                            //         type: 'time',
+                            //         time: {
+                            //             unit: 'day'
+                            //         }
+                            //     }]
+                            // }
+                        }
+                    });
+                    
+                    var data = [];
 
                     var spreadsheetId = "1Hn5X9H99YlUjvYpxEuYQ2XCdCOvV_AepQd8weJ5CGAk",
                         url = "https://spreadsheets.google.com/feeds/list/" +
@@ -363,37 +390,11 @@
                                 label_data.push(new Date(data[i].title.$t));
                                 value_data.push(data[i].content.$t.replace('close: ', '') * 1);
                             }
+                            chart1.update()
                         }
                     });
                     
 
-                    var ctx = document.getElementById('myChart').getContext('2d');
-                    var chart = new Chart(ctx, {
-                        // The type of chart we want to create
-                        type: 'line',
-
-                        // The data for our dataset
-                        data: {
-                            labels: label_data,
-                            datasets: [{
-                                label: 'KOSDAQ',
-                                borderColor: 'rgb(255, 99, 132)',
-                                data: value_data
-                            }]
-                        },
-
-                        // Configuration options go here
-                        options: {
-                            scales: {
-                                xAxes: [{
-                                    type: 'time',
-                                    time: {
-                                        unit: 'day'
-                                    }
-                                }]
-                            }
-                        }
-                    });
                     </script> 
                 </div>
             </div>
