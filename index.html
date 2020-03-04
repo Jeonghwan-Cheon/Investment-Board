@@ -154,13 +154,13 @@
                                 }
                                 console.log(data);
                                 for (i = 0; i < len; i++) {
-                                    document.getElementById("closeyest".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(yesterday_close[i]);
-                                    document.getElementById("open".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(open[i]);
+                                    document.getElementById("closeyest".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(yesterday_close[i]);
+                                    document.getElementById("open".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(open[i]);
                                     document.getElementById("amount".concat(String(i+1))).innerHTML = amount[i];
-                                    document.getElementById("result".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(result[i]);
+                                    document.getElementById("result".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(result[i]);
                                 }
 
-                                document.getElementById("result4").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(result[0] + result[1] + result[2]);
+                                document.getElementById("result4").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(result[0] + result[1] + result[2]);
                             }
                         });
                     </script>
@@ -225,6 +225,8 @@
                             url = "https://spreadsheets.google.com/feeds/list/" +
                                 spreadsheetId +
                                 "/od6/public/basic?alt=json";
+                        
+                        var naverstockId = "https://finance.naver.com/item/main.nhn?code="
                                 
                         $.get({
                             url: url,
@@ -241,17 +243,18 @@
                                 
                                 for (i = 0; i < len; i++) {
                                     document.getElementById("m1code".concat(String(i+1))).innerHTML = code_data[i];
-                                    document.getElementById("m1buy".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(buy_data[i]);
-                                    document.getElementById("m1price".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(price_data[i]);
-                                    document.getElementById("m1retention".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(retention_data[i]);
-                                    document.getElementById("m1result".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(profit_data[i]);
+                                    document.getElementById("m1buy".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(buy_data[i]);
+                                    document.getElementById("m1price".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(price_data[i]);
+                                    document.getElementById("m1retention".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(retention_data[i]);
+                                    document.getElementById("m1result".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(profit_data[i]);
                                 }
-
+                                document.getElementById("m1result6").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(profit_data[0] + profit_data[1] + profit_data[2] + profit_data[3] + profit_data[4] + profit_data[5]);
+                                console.log(parstInt(profit_data[0]) + parstInt(profit_data[1]) + parstInt(profit_data[2]) + parstInt(profit_data[3]) + parstInt(profit_data[4]) + parstInt(profit_data[5]))
                             }
                         });
                         console.log(temp);
                     </script>
-                    <table border="0" bordercolor="gray" align="center" style="table-layout: auto; width:80%; height:200px">
+                    <table border="0" bordercolor="gray" align="center" style="table-layout: auto; width:80%; height:250px">
                         <tr align="center" style="background:whitesmoke;">
                             <td style="width:30%"> Stock Code </td>
                             <td style="width:17.5%"> Buy </td>
@@ -279,18 +282,27 @@
                             <td id="m1price3"> - </td>
                             <td id="m1retention3"> - </td>
                             <td id="m1result3"> - </td>
-                        </tr>                        <tr align="center" >
+                        </tr>
+                        <tr align="center" >
                             <td> <span id="m1code4"> </span> </td>
                             <td id="m1buy4"> - </td>
                             <td id="m1price4"> - </td>
                             <td id="m1retention4"> - </td>
                             <td id="m1result4"> - </td>
-                        </tr>                        <tr align="center" >
+                        </tr>
+                        <tr align="center" >
                             <td> <span id="m1code5"> </span> </td>
                             <td id="m1buy5"> - </td>
                             <td id="m1price5"> - </td>
                             <td id="m1retention5"> - </td>
                             <td id="m1result5"> - </td>
+                        </tr>
+                        <tr align="center">
+                            <td> Total </td>
+                            <td> - </td>
+                            <td> - </td>
+                            <td> - </td>
+                            <td id='m1result6'> - </td>
                         </tr>
                     </table>
                     <p> <br> </p>
