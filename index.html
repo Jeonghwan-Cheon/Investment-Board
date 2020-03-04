@@ -249,7 +249,7 @@
                                     document.getElementById("m1result".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(profit_data[i]);
                                 }
                                 document.getElementById("m1result6").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(profit_data[0] + profit_data[1] + profit_data[2] + profit_data[3] + profit_data[4] + profit_data[5]);
-                                console.log(parstInt(profit_data[0]) + parstInt(profit_data[1]) + parstInt(profit_data[2]) + parstInt(profit_data[3]) + parstInt(profit_data[4]) + parstInt(profit_data[5]))
+                                console.log(parseInt(profit_data[0]) + parseInt(profit_data[1]) + parseInt(profit_data[2]) + parseInt(profit_data[3]) + parseInt(profit_data[4]) + parseInt(profit_data[5]))
                             }
                         });
                         console.log(temp);
