@@ -24,6 +24,7 @@
     
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="js/Chart.js"></script>
+    <script src="js/moment.js"></script>
 
     <link rel='manifest' href='manifest.json'>
 
@@ -361,14 +362,16 @@
 
                         // Configuration options go here
                         options: {
-                            // scales: {
-                            //     xAxes: [{
-                            //         type: 'time',
-                            //         time: {
-                            //             unit: 'day'
-                            //         }
-                            //     }]
-                            // }
+                            scales: {
+                                xAxes: [{
+                                    type: 'time',
+                                    time: {
+                                        displayFormats: {
+                                            quarter: 'MMM YYYY'
+                                        }
+                                    }
+                                }]
+                            }
                         }
                     });
                     
