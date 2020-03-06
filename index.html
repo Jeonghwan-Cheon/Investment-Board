@@ -127,7 +127,7 @@
                     var len = data.length;
                     console.log(data);
                     for (i = 0; i < len; i++) {
-                        date.push(new Date(data[i].title.$t))
+                        date.push(new Date(data[i].title.$t.replace(' ', 'T')))
                         model1_est.push(data[i].content.$t.split(' ')[1].replace(',', ''));
                         model2_est.push(data[i].content.$t.split(' ')[5].replace(',', ''));
                         total.push(data[i].content.$t.split(' ')[9].replace(',', ''));
