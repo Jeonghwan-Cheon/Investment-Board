@@ -94,6 +94,20 @@
     <!-- Today Section -->
     <section id="today">
         <script>
+            const months = [
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December'
+                ];
             var data = [],
                 date = [],
                 model1_est = [],
@@ -125,7 +139,7 @@
                     totalrr_year = ((Math.pow(totalrr,249/len)*total[0] - total[0])/total[0])*100;
                     totalest = total[len-1];
 
-                    document.getElementById("lastupdate").innerHTML = date[len-1];
+                    document.getElementById("lastupdate").innerHTML = months[date[len-1].getMonth()]+" "+date[len-1].getDate()+", "+date[len-1].getFullYear();
                     document.getElementById("DayRateReturn").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayrr)+"%";
                     document.getElementById("DayProfit").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(dayprofit);
                     document.getElementById("TotalRateReturn").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(totalrr_year)+"%";
