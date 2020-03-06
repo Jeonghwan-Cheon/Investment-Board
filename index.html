@@ -140,7 +140,7 @@
                     totalest = total[len-1];
 
                     // document.getElementById("lastupdate").innerHTML = months[date[len-1].getMonth()]+" "+date[len-1].getDate()+", "+date[len-1].getFullYear();
-                    document.getElementById("lastupdate").innerHTML = moment(date[len-1]).format('MMMM Do[,] YYYY');
+                    document.getElementById("lastupdate").innerHTML = date[len-1];
                     document.getElementById("DayRateReturn").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayrr)+"%";
                     document.getElementById("DayProfit").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(dayprofit);
                     document.getElementById("TotalRateReturn").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(totalrr_year)+"%";
