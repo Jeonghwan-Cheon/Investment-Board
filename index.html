@@ -127,7 +127,7 @@
                     var len = data.length;
                     console.log(data);
                     for (i = 0; i < len; i++) {
-                        date.push(moment(data[i].title.$t).format('YYYY-MM-DDTHH:mm:ss'))
+                        date.push(new moment(data[i].title.$t))
                         model1_est.push(data[i].content.$t.split(' ')[1].replace(',', ''));
                         model2_est.push(data[i].content.$t.split(' ')[5].replace(',', ''));
                         total.push(data[i].content.$t.split(' ')[9].replace(',', ''));
@@ -462,7 +462,7 @@
                             for (i = 0; i < len; i++) {
                                 var temp = {};
                                 temp['x'] = label_data[i];
-                                temp['y'] = value_data[i];
+                                temp['y'] = value_data[i]/value_data[0];
                                 multi_data.push(temp);
                             }
                             console.log(multi_data);
