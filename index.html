@@ -23,8 +23,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="js/Chart.js"></script>
-    <script src="js/moment.js"></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <link rel='manifest' href='manifest.json'>
 
@@ -424,7 +424,6 @@
                                 data: multi_data
                             }]
                         },
-                        // data : [{x:moment(2020-01-01), y:35}, {x:moment(2020-01-02), y:70}],
 
                         // Configuration options go here
                         options: {
@@ -435,7 +434,7 @@
                                         {
                                             format: 'MM',
                                             unit: 'month',
-                                            displayFormats: { month: 'MM' },
+                                            displayFormats: { month: 'MMM YYYY' },
                                         }
                                 }]
                             }
@@ -457,7 +456,7 @@
                             var len = data.length,
                                 i = 0;
                             for (i = 0; i < len; i++) {
-                                label_data.push(moment(data[i].title.$t));
+                                label_data.push(new moment(data[i].title.$t));
                                 value_data.push(data[i].content.$t.replace('close: ', '') * 1);
                             }
                             for (i = 0; i < len; i++) {
