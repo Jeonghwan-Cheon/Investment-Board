@@ -84,7 +84,7 @@
                     <div class="intro-text">
                         <h1 class="name">Investment Situation Board</h1>
                         <hr class="star-light">
-                        <span class="skills">Algorithmic Trading test5</span>
+                        <span class="skills">Algorithmic Trading test</span>
                     </div>
                 </div>
             </div>
@@ -307,7 +307,7 @@
                                 }
                                 
                                 for (i = 0; i < len; i++) {
-                                    document.getElementById("m1code".concat(String(i+1))).innerHTML = code_data[i];
+                                    document.getElementById("m1code".concat(String(i+1))).innerHTML = '<a href="https://finance.naver.com/item/main.nhn?code='+code_data[i]+'">'+code_data[i]+'</a>';
                                     document.getElementById("m1buy".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(buy_data[i]);
                                     document.getElementById("m1price".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(price_data[i]);
                                     document.getElementById("m1retention".concat(String(i+1))).innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(retention_data[i]);
@@ -429,10 +429,14 @@
                         options: {
                             scales: {
                                 xAxes: [{
-                                    // type: 'time',
+                                    // type: "time",
                                     // time: {
+                                    //     unit: 'day',
+                                    //     unitStepSize: 0.5,
+                                    //     round: 'hour',
+                                    //     tooltipFormat: "h:mm:ss a",
                                     //     displayFormats: {
-                                    //         quarter: 'MMM YYYY'
+                                    //     hour: 'MMM D'
                                     //     }
                                     // }
                                 }]
@@ -455,7 +459,7 @@
                             var len = data.length,
                                 i = 0;
                             for (i = 0; i < len; i++) {
-                                label_data.push(new Date(data[i].title.$t));
+                                label_data.push(moment(data[i].title.$t).format("MMM YYYY"));
                                 value_data.push(data[i].content.$t.replace('close: ', '') * 1);
                             }
                             chart1.update()
