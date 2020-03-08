@@ -29,7 +29,7 @@
     <link rel='manifest' href='manifest.json'>
 
     <link rel="apple-touch-icon" sizes="192x192" href="icon/icon-192x192.png">
-    <link rel="apple-touch-icon" sizes="384x384" href="icon/icon-384x384.png"> 
+    <link rel="apple-touch-icon" sizes="512x512" href="icon/icon-512x512.png"> 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -139,19 +139,36 @@
                         temp['y'] = total[i]/total[0];
                         total_multi_data.push(temp);
                     }
-
+                    
+                    // total
                     dayprofit = total[len-1] - total[len-2];
                     dayrr = (dayprofit/total[len-2])*100;
                     totalrr = total[len-1]/total[0];
-                    totalrr_year = ((Math.pow(totalrr,249/len)*total[0] - total[0])/total[0])*100;
+                    totalrr_year = ((Math.pow(totalrr,249/len-1)*total[0] - total[0])/total[0])*100;
                     totalest = total[len-1];
 
-                    // document.getElementById("lastupdate").innerHTML = months[date[len-1].getMonth()]+" "+date[len-1].getDate()+", "+date[len-1].getFullYear();
+                    // model1
+                    model1_dayprofit = model1_est[len-1] - model1_est[len-2];
+                    model1_dayrr = (model1_dayprofit/model1_est[len-2])*100;
+                    model1_totalrr = model1_est[len-1]/model1_est[0];
+                    model1_totalrr_year = ((Math.pow(model1_totalrr,249/len-1)*model1_est[0] - model1_est[0])/model1_est[0])*100;
+                    model1_totalest = model1_est[len-1];
+                    // model2
+                    model2_dayprofit = model2_est[len-1] - model2_est[len-2];
+                    model2_dayrr = (model2_dayprofit/model2_est[len-2])*100;
+                    model2_totalrr = model2_est[len-1]/model2_est[0];
+                    model2_totalrr_year = ((Math.pow(model2_totalrr,249/len-1)*model2_est[0] - model2_est[0])/model2_est[0])*100;
+                    model2_totalest = model2_est[len-1];
+
                     document.getElementById("lastupdate").innerHTML = moment(date[len-1]).format("MMM DD[,] YYYY");
                     document.getElementById("DayRateReturn").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayrr)+"%";
                     document.getElementById("DayProfit").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(dayprofit);
                     document.getElementById("TotalRateReturn").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(totalrr_year)+"%";
                     document.getElementById("TotalEst").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(totalest);
+                    document.getElementById("model1rr").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(model1_totalrr_year)+"%";
+                    document.getElementById("model1est").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(model1_totalest);
+                    document.getElementById("model2rr").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(model2_totalrr_year)+"%";
+                    document.getElementById("model2est").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(model2_totalest);
                 }
             });
         </script>
@@ -426,49 +443,6 @@
                         kosdaq150_multi_data = [],
                         bio_multi_data = [],
                         semicond_multi_data = [];
-
-                    var ctx = document.getElementById('myChart').getContext('2d');
-                    var chart1 = new Chart(ctx, {
-                        // The type of chart we want to create
-                        type: 'line',
-
-                        // The data for our dataset
-                        data: {
-                            datasets: [{
-                                label: 'Balance',
-                                borderColor: 'rgb(255, 99, 132)',
-                                pointStyle: 'circle',
-                                pointRadius: 0,
-                                lineTension: 0,
-                                data: total_multi_data
-                            },{
-                                label: 'KOSDAQ',
-                                borderColor: 'rgb(0, 169, 224)',
-                                pointStyle: 'circle',
-                                pointRadius: 0,
-                                lineTension: 0,
-                                data: kosdaq_multi_data
-                            }]
-                        },
-
-                        // Configuration options go here
-                        options: {
-                            scales: {
-                                xAxes: [{
-                                    type: 'time',
-                                    time: 
-                                        {
-                                            // format: 'MM',
-                                            // unit: 'month',
-                                            // displayFormats: { month: 'MMM YYYY' }
-                                            format: 'dd',
-                                            unit: 'day',
-                                            displayFormats: { month: 'MMM dd' }
-                                        }
-                                }]
-                            }
-                        }
-                    });
                     
                     var data = [];
 
@@ -522,9 +496,52 @@
                                 temp['y'] = semicond_data[i]/semicond_data[0];
                                 semicond_multi_data.push(temp);
                             }
-                            chart1.update();
                         }
                     });
+
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var chart1 = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+                            datasets: [{
+                                label: 'Balance',
+                                borderColor: 'rgb(255, 99, 132)',
+                                pointStyle: 'circle',
+                                pointRadius: 0,
+                                lineTension: 0,
+                                data: total_multi_data
+                            },{
+                                label: 'KOSDAQ',
+                                borderColor: 'rgb(0, 169, 224)',
+                                pointStyle: 'circle',
+                                pointRadius: 0,
+                                lineTension: 0,
+                                data: kosdaq_multi_data
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            scales: {
+                                xAxes: [{
+                                    type: 'time',
+                                    time: 
+                                        {
+                                            // format: 'MM',
+                                            // unit: 'month',
+                                            // displayFormats: { month: 'MMM YYYY' }
+                                            format: 'dd',
+                                            unit: 'day',
+                                            displayFormats: { month: 'MMM dd' }
+                                        }
+                                }]
+                            }
+                        }
+                    });
+
                     console.log(total_multi_data);
 
                     </script> 
@@ -647,13 +664,13 @@
             </div>
             <div class="row">
                 <div class="footer-col col-md-6 text-center">
-                    <h2> 32% </h2>
+                    <h2 id="model1rr"> NN% </h2>
                     <p> per year </p>
                     <p> Rate of Return (Estimation) </p>  
                     <p> <br> </p>           
                 </div>
                 <div class="footer-col col-md-6 text-center">
-                    <h2> 630,257 </h2>
+                    <h2 id = "model1est"> NN </h2>
                     <p> won </p>
                     <p> Current Valuation </p>  
                     <p> <br> </p> 
@@ -823,13 +840,13 @@
             </div>
             <div class="row">
                 <div class="footer-col col-md-6 text-center">
-                    <h2> 121% </h2>
+                    <h2 id = "model2rr"> NN% </h2>
                     <p> per year </p>
                     <p> Rate of Return (Estimation) </p>  
                     <p> <br> </p>           
                 </div>
                 <div class="footer-col col-md-6 text-center">
-                    <h2> 1,130,257 </h2>
+                    <h2 id = "model2est"> NN </h2>
                     <p> won </p>
                     <p> Current Valuation </p>  
                     <p> <br> </p> 
