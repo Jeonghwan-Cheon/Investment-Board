@@ -113,6 +113,7 @@
                 model1_est = [],
                 model2_est = [],
                 total = [];
+                total_multi_data = [];
             var dayprofit,
                 dayrr;
             var spreadsheetId = "1K5xSchNJyX7lfygCngh6Vc0tJpDwRdeDL28bhdziaJk",
@@ -131,6 +132,12 @@
                         model1_est.push(data[i].content.$t.split(' ')[1].replace(',', ''));
                         model2_est.push(data[i].content.$t.split(' ')[5].replace(',', ''));
                         total.push(data[i].content.$t.split(' ')[9].replace(',', ''));
+                    }
+                    for (i = 0; i < len; i++) {
+                        var temp = {};
+                        temp['x'] = date[i];
+                        temp['y'] = total[i]/total[0];
+                        total_multi_data.push(temp);
                     }
 
                     dayprofit = total[len-1] - total[len-2];
@@ -431,15 +438,13 @@
                                 label: 'Balance',
                                 borderColor: 'rgb(255, 99, 132)',
                                 pointStyle: 'circle',
-                                hoverBackgroundColor: 'rgba(0, 0, 0, 0)',
                                 pointRadius: 0,
                                 lineTension: 0,
-                                data: kospi_multi_data
+                                data: total_multi_data
                             },{
                                 label: 'KOSDAQ',
                                 borderColor: 'rgb(0, 169, 224)',
                                 pointStyle: 'circle',
-                                hoverBackgroundColor: 'rgba(0, 0, 0, 0)',
                                 pointRadius: 0,
                                 lineTension: 0,
                                 data: kosdaq_multi_data
@@ -453,9 +458,12 @@
                                     type: 'time',
                                     time: 
                                         {
-                                            format: 'MM',
-                                            unit: 'month',
-                                            displayFormats: { month: 'MMM YYYY' },
+                                            // format: 'MM',
+                                            // unit: 'month',
+                                            // displayFormats: { month: 'MMM YYYY' }
+                                            format: 'dd',
+                                            unit: 'day',
+                                            displayFormats: { month: 'MMM dd' }
                                         }
                                 }]
                             }
@@ -517,7 +525,7 @@
                             chart1.update();
                         }
                     });
-                    
+                    console.log(total_multi_data);
 
                     </script> 
                 </div>
