@@ -140,7 +140,7 @@
                     totalest = total[len-1];
 
                     // document.getElementById("lastupdate").innerHTML = months[date[len-1].getMonth()]+" "+date[len-1].getDate()+", "+date[len-1].getFullYear();
-                    document.getElementById("lastupdate").innerHTML = date[len-1];
+                    document.getElementById("lastupdate").innerHTML = moment(date[len-1]).format("MMM DD[,] YYYY");
                     document.getElementById("DayRateReturn").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayrr)+"%";
                     document.getElementById("DayProfit").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(dayprofit);
                     document.getElementById("TotalRateReturn").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(totalrr_year)+"%";
@@ -408,9 +408,18 @@
                     <canvas id="myChart"></canvas>
                     <p> <br> </p> 
                     <script>
-                    var label_data = [],
-                        value_data = [],
-                        multi_data = [];
+                    var date_data = []
+                        kosdaq_data = [],
+                        kospi_data = [],
+                        kosdaq150_data = [],
+                        bio_data = [],
+                        semicond_data = [],
+                        kosdaq_multi_data = [],
+                        kospi_multi_data = [],
+                        kosdaq150_multi_data = [],
+                        bio_multi_data = [],
+                        semicond_multi_data = [];
+
                     var ctx = document.getElementById('myChart').getContext('2d');
                     var chart1 = new Chart(ctx, {
                         // The type of chart we want to create
@@ -419,12 +428,21 @@
                         // The data for our dataset
                         data: {
                             datasets: [{
-                                label: 'KOSDAQ',
+                                label: 'Balance',
                                 borderColor: 'rgb(255, 99, 132)',
                                 pointStyle: 'circle',
+                                hoverBackgroundColor: 'rgba(0, 0, 0, 0)',
                                 pointRadius: 0,
                                 lineTension: 0,
-                                data: multi_data
+                                data: kospi_multi_data
+                            },{
+                                label: 'KOSDAQ',
+                                borderColor: 'rgb(0, 169, 224)',
+                                pointStyle: 'circle',
+                                hoverBackgroundColor: 'rgba(0, 0, 0, 0)',
+                                pointRadius: 0,
+                                lineTension: 0,
+                                data: kosdaq_multi_data
                             }]
                         },
 
@@ -446,11 +464,11 @@
                     
                     var data = [];
 
-                    var spreadsheetId = "1Hn5X9H99YlUjvYpxEuYQ2XCdCOvV_AepQd8weJ5CGAk",
+                    var spreadsheetId = "1K5xSchNJyX7lfygCngh6Vc0tJpDwRdeDL28bhdziaJk",
                         url = "https://spreadsheets.google.com/feeds/list/" +
                             spreadsheetId +
-                            "/od6/public/basic?alt=json";
-                            
+                            "/2/public/basic?alt=json";
+
                     $.get({
                         url: url,
                         success: function(response) {
@@ -458,17 +476,44 @@
                             data = response.feed.entry;
                             var len = data.length,
                                 i = 0;
-                            for (i = 0; i < len; i++) {
-                                label_data.push(new moment(data[i].title.$t));
-                                value_data.push(data[i].content.$t.replace('close: ', '') * 1);
+                            for (i = 1; i < len; i++) {
+                                date_data.push(new moment(data[i].title.$t));
+                                kosdaq_data.push(data[i].content.$t.split(' ')[1].replace(',', ''));
+                                kospi_data.push(data[i].content.$t.split(' ')[5].replace(',', ''));
+                                kosdaq150_data.push(data[i].content.$t.split(' ')[9].replace(',', ''));
+                                bio_data.push(data[i].content.$t.split(' ')[13].replace(',', ''));
+                                semicond_data.push(data[i].content.$t.split(' ')[17].replace(',', ''));
                             }
-                            for (i = 0; i < len; i++) {
+                            for (i = 0; i < len-1; i++) {
                                 var temp = {};
-                                temp['x'] = label_data[i];
-                                temp['y'] = value_data[i]/value_data[0];
-                                multi_data.push(temp);
+                                temp['x'] = date_data[i];
+                                temp['y'] = kosdaq_data[i]/kosdaq_data[0];
+                                kosdaq_multi_data.push(temp);
                             }
-                            console.log(multi_data);
+                            for (i = 0; i < len-1; i++) {
+                                var temp = {};
+                                temp['x'] = date_data[i];
+                                temp['y'] = kospi_data[i]/kospi_data[0];
+                                kospi_multi_data.push(temp);
+                            }
+                            for (i = 0; i < len-1; i++) {
+                                var temp = {};
+                                temp['x'] = date_data[i];
+                                temp['y'] = kosdaq150_data[i]/kosdaq150_data[0];
+                                kosdaq150_multi_data.push(temp);
+                            }
+                            for (i = 0; i < len-1; i++) {
+                                var temp = {};
+                                temp['x'] = date_data[i];
+                                temp['y'] = bio_data[i]/bio_data[0];
+                                bio_multi_data.push(temp);
+                            }
+                            for (i = 0; i < len-1; i++) {
+                                var temp = {};
+                                temp['x'] = date_data[i];
+                                temp['y'] = semicond_data[i]/semicond_data[0];
+                                semicond_multi_data.push(temp);
+                            }
                             chart1.update();
                         }
                     });
