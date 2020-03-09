@@ -513,8 +513,6 @@ fieldset[disabled] .btn-success.active {
   transition: top 0.1s ease-in, background 0.5s linear;
 }
 div#maincontent {
-  /* outline: none; */
-  border: none;
   margin-left: 0;
   margin-right: 0;
   width: 100%;
