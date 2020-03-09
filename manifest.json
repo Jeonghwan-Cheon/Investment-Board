@@ -2,7 +2,7 @@
 	"name" : "CheeseBurger - Investment Situation Board",
 	"short_name" : "CheeseBurger",
 	"description" : "Investment Situation Board for Project CheeseBurger ",
-	"start_url" : "https://jeonghwan-cheon.github.io/Investment-Situation-Board/",
+	"start_url" : "https://jeonghwan-cheon.github.io/Investment-Board/",
 	"display" : "standalone",
 	"lang" : "English",
 	"orientation" : "any",
