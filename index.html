@@ -779,6 +779,7 @@
             }
         }
     });
+    var specialLineTension = 0.4;
 
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart1 = new Chart(ctx, {
@@ -792,14 +793,14 @@
                 borderColor: 'rgb(255, 99, 132)',
                 pointStyle: 'circle',
                 pointRadius: 0,
-                lineTension: 0,
+                lineTension: specialLineTension,
                 data: total_multi_data
             },{
                 label: 'KOSDAQ',
                 borderColor: 'rgb(0, 169, 224)',
                 pointStyle: 'circle',
                 pointRadius: 0,
-                lineTension: 0,
+                lineTension: specialLineTension,
                 data: kosdaq_multi_data
             }]
         },
@@ -838,7 +839,7 @@
                     borderColor: 'rgb(255, 99, 132)',
                     pointStyle: 'circle',
                     pointRadius: 0,
-                    lineTension: 0,
+                    lineTension: specialLineTension,
                     data: model1_total_multi_data
                 }]
             },
@@ -942,7 +943,7 @@
                 borderColor: 'rgb(255, 99, 132)',
                 pointStyle: 'circle',
                 pointRadius: 0,
-                lineTension: 0,
+                lineTension: specialLineTension,
                 data: model2_total_multi_data
             }]
         },
