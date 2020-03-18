@@ -195,8 +195,7 @@ section h2 {
   font-size: 3em;
 }
 section.success {
-  background: #18BC9C;
-  color: white;
+  background: rgb(241, 241, 241);
 }
 @media (max-width: 767px) {
   section {
@@ -529,6 +528,6 @@ div#maincontent {
   margin-left: 0;
   margin-right: 0;
   width: 100%;
-  /* background: linear-gradient(45deg, #18BC9C, #607ece); */
-  background: linear-gradient(45deg, #c9265c, #4978cf);
+  background: linear-gradient(45deg, #18BC9C, #607ece);
+  /* background: linear-gradient(45deg, #c9265c, #4978cf); */
 }
