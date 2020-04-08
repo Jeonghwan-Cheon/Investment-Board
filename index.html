@@ -717,15 +717,15 @@
         document.getElementById("model2rr").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(model2_totalrr_year)+"%";
         document.getElementById("model2est").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(model2_totalest);
         if(dayprofit>=4000){
-            document.getElementById("BurgerUnit").innerHTML = "Today, you got <br>" + Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayprofit/2000) + " cheese burgers <br>";
+            document.getElementById("BurgerUnit").innerHTML = "Today, you got <br>" + Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayprofit/2000) + " cheese burgers <br><br>";
         } else if(dayprofit>=2000){
-            document.getElementById("BurgerUnit").innerHTML = "Today, you got <br>" + Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayprofit/2000) + " cheese burger <br>";
+            document.getElementById("BurgerUnit").innerHTML = "Today, you got <br>" + Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayprofit/2000) + " cheese burger <br><br>";
         } else if(dayprofit>=0){
-            document.getElementById("BurgerUnit").innerHTML = "Today, you got <br> no cheese burger <br>";
+            document.getElementById("BurgerUnit").innerHTML = "Today, you got <br> no cheese burger <br><br>";
         } else if(dayprofit>=-2000){
-            document.getElementById("BurgerUnit").innerHTML = "Today, you lost <br>" + Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayprofit/2000) + " cheese burger <br>";
+            document.getElementById("BurgerUnit").innerHTML = "Today, you lost <br>" + Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayprofit/2000) + " cheese burger <br><br>";
         } else{
-            document.getElementById("BurgerUnit").innerHTML = "Today, you lost <br>" + Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayprofit/2000) + " cheese burgers <br>";
+            document.getElementById("BurgerUnit").innerHTML = "Today, you lost <br>" + Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayprofit/2000) + " cheese burgers <br><br>";
         }
         var emoji = ""
         if(dayprofit>0){
