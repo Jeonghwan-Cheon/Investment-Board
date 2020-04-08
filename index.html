@@ -729,12 +729,18 @@
         }
         var emoji = ""
         if(dayprofit>0){
-            for(i=0; i<=(dayprofit/2000)-1; i++){
+            for(i=1; i<=(dayprofit/2000); i++){
                 emoji = emoji + "🍔"
+                if(i%5==0){
+                    emoji = emoji +"<br>"
+                }
             }
         } else {
-            for(i=0; i<=(-dayprofit/2000)-1; i++){
+            for(i=1; i<=(-dayprofit/2000); i++){
                 emoji = emoji + "🗑️"
+                if(i%5==0){
+                    emoji = emoji +"<br>"
+                }
             }
         }
         document.getElementById("Burgeremoji").innerHTML = emoji;
