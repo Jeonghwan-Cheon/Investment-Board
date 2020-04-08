@@ -123,6 +123,13 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
+                    <h4 id="BurgerUnit" > Today, you got cheese burgers</h4>
+                    <h2 id="Burgeremoji" > 🍔 </h2>
+                    <p> <br> </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
                     <h3> · Strategic Model 1 · </h3>
                     <p> <br> </p>
                 </div>
@@ -709,6 +716,29 @@
         document.getElementById("model1est").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(model1_totalest);
         document.getElementById("model2rr").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(model2_totalrr_year)+"%";
         document.getElementById("model2est").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 6 }).format(model2_totalest);
+        if(dayprofit>=4000){
+            document.getElementById("BurgerUnit").innerHTML = "Today, you got " + Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayprofit/2000) + " cheese burgers";
+        } else if(dayprofit>=2000){
+            document.getElementById("BurgerUnit").innerHTML = "Today, you got " + Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayprofit/2000) + " cheese burger";
+        } else if(dayprofit>=0){
+            document.getElementById("BurgerUnit").innerHTML = "Today, you got no cheese burger";
+        } else if(dayprofit>=-2000){
+            document.getElementById("BurgerUnit").innerHTML = "Today, you lost " + Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayprofit/2000) + " cheese burger";
+        } else{
+            document.getElementById("BurgerUnit").innerHTML = "Today, you lost " + Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayprofit/2000) + " cheese burgers";
+        }
+        var emoji = ""
+        if(dayprofit>0){
+            for(i=0; i<=dayprofit/2000; i++){
+                emoji = emoji + "🍔"
+            }
+        } else {
+            for(i=0; i<=-dayprofit/2000; i++){
+                emoji = emoji + "🗑️"
+            }
+        }
+        document.getElementById("Burgeremoji").innerHTML = emoji;
+        
     </script>
 
 <script>
