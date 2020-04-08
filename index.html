@@ -729,11 +729,11 @@
         }
         var emoji = ""
         if(dayprofit>0){
-            for(i=0; i<=dayprofit/2000; i++){
+            for(i=0; i<=(dayprofit/2000)-1; i++){
                 emoji = emoji + "🍔"
             }
         } else {
-            for(i=0; i<=-dayprofit/2000; i++){
+            for(i=0; i<=(-dayprofit/2000)-1; i++){
                 emoji = emoji + "🗑️"
             }
         }
