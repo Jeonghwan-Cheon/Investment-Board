@@ -286,20 +286,17 @@
                             <td style="width:15%"> Balance </td>
                             <td style="width:15%"> Model1 </td>
                             <td style="width:15%"> Model2 </td>
-                            <td style="width:15%"> KOSPI </td>
                             <td style="width:15%"> KOSDAQ </td>
                         </tr>
                         <tr align="center" >
                             <td> 1-Month </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
+                            <td id='rr_balance_1mon'> - </td>
+                            <td id='rr_model1_1mon'> - </td>
+                            <td id='rr_model2_1mon'> - </td>
+                            <td id='rr_kosdaq_1mon'> - </td>
                         </tr>
                         <tr align="center">
                             <td> 3-Month </td>
-                            <td> - </td>
                             <td> - </td>
                             <td> - </td>
                             <td> - </td>
@@ -311,13 +308,11 @@
                             <td> - </td>
                             <td> - </td>
                             <td> - </td>
-                            <td> - </td>
                         </tr>
                         <tr align="center">
                             <td> 1-Year </td>
                             <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
+                            <td> - </td>  
                             <td> - </td>
                             <td> - </td>
                         </tr>
@@ -333,20 +328,17 @@
                             <td style="width:15%"> Balance </td>
                             <td style="width:15%"> Model1 </td>
                             <td style="width:15%"> Model2 </td>
-                            <td style="width:15%"> KOSPI </td>
                             <td style="width:15%"> KOSDAQ </td>
                         </tr>
                         <tr align="center" >
                             <td> 1-Month </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
+                            <td id='mdd_balance_1mon'> - </td>
+                            <td id='mdd_model1_1mon'> - </td>
+                            <td id='mdd_model2_1mon'> - </td>
+                            <td id='mdd_kosdaq_1mon'> - </td>
                         </tr>
                         <tr align="center">
                             <td> 3-Month </td>
-                            <td> - </td>
                             <td> - </td>
                             <td> - </td>
                             <td> - </td>
@@ -358,11 +350,9 @@
                             <td> - </td>
                             <td> - </td>
                             <td> - </td>
-                            <td> - </td>
                         </tr>
                         <tr align="center">
                             <td> 1-Year </td>
-                            <td> - </td>
                             <td> - </td>
                             <td> - </td>
                             <td> - </td>
@@ -707,6 +697,11 @@
         model2_totalrr_year = ((Math.pow(model2_totalrr,249/len-1)*model2_est[0] - model2_est[0])/model2_est[0])*100;
         model2_totalest = model2_est[len-1];
         console.log(model2_totalrr_year)
+        //table data
+        rr_balance_1mon_d = (total[len-1]/total[len-22]-1)*100
+        rr_model1_1mon_d = (model1_est[len-1]/model1_est[len-22]-1)*100
+        rr_model2_1mon_d = (model2_est[len-1]/model2_est[len-22]-1)*100
+        console.log("table_Data",rr_balance_1mon_d, rr_model1_1mon_d, rr_model2_1mon_d)
 
         document.getElementById("lastupdate").innerHTML = moment(date[len-1]).format("MMM DD[,] YYYY");
         document.getElementById("DayRateReturn").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayrr)+"%";
@@ -746,6 +741,10 @@
         }
         emoji = emoji + "<br>"
         document.getElementById("Burgeremoji").innerHTML = emoji;
+        document.getElementById("rr_balance_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(rr_balance_1mon_d)+"%";
+        document.getElementById("rr_model1_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(rr_model1_1mon_d)+"%";
+        document.getElementById("rr_model2_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(rr_model2_1mon_d)+"%";
+        
         
     </script>
 
@@ -817,6 +816,13 @@
             }
         }
     });
+
+    //table data
+    rr_kosdaq_1mon_d = (kosdaq_data[len-1]/kosdaq_data[len-22]-1)*100
+    console.log(rr_kosdaq_1mon_d)
+    document.getElementById("rr_kosdaq_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(rr_kosdaq_1mon_d)+"%";
+
+
     var specialLineTension = 0;
 
     var ctx = document.getElementById('myChart').getContext('2d');
@@ -902,109 +908,109 @@
         });
     </script> 
 
-    <!-- <script>
-    var ctx = document.getElementById('ETF-KOSDAQ').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
+//     <script>
+//     var ctx = document.getElementById('ETF-KOSDAQ').getContext('2d');
+//     var chart = new Chart(ctx, {
+//         // The type of chart we want to create
+//         type: 'line',
 
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'Profit',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45]
-            },{
-                label: 'Index',
-                borderColor: 'rgb(146, 207, 191)',
-                data: [0, 7, 5, 3, 10, 17, 12]
-            }]
-        }
-    });
-    </script>
+//         // The data for our dataset
+//         data: {
+//             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+//             datasets: [{
+//                 label: 'Profit',
+//                 borderColor: 'rgb(255, 99, 132)',
+//                 data: [0, 10, 5, 2, 20, 30, 45]
+//             },{
+//                 label: 'Index',
+//                 borderColor: 'rgb(146, 207, 191)',
+//                 data: [0, 7, 5, 3, 10, 17, 12]
+//             }]
+//         }
+//     });
+//     </script>
 
-<script>
-    var ctx = document.getElementById('ETF-Bio').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
+// <script>
+//     var ctx = document.getElementById('ETF-Bio').getContext('2d');
+//     var chart = new Chart(ctx, {
+//         // The type of chart we want to create
+//         type: 'line',
 
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'Profit',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45]
-            },{
-                label: 'Index',
-                borderColor: 'rgb(146, 207, 191)',
-                data: [0, 7, 5, 3, 10, 17, 12]
-            }]
-        }
-    });
-    </script> 
+//         // The data for our dataset
+//         data: {
+//             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+//             datasets: [{
+//                 label: 'Profit',
+//                 borderColor: 'rgb(255, 99, 132)',
+//                 data: [0, 10, 5, 2, 20, 30, 45]
+//             },{
+//                 label: 'Index',
+//                 borderColor: 'rgb(146, 207, 191)',
+//                 data: [0, 7, 5, 3, 10, 17, 12]
+//             }]
+//         }
+//     });
+//     </script> 
 
-<script>
-    var ctx = document.getElementById('ETF-SemiCon').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
+// <script>
+//     var ctx = document.getElementById('ETF-SemiCon').getContext('2d');
+//     var chart = new Chart(ctx, {
+//         // The type of chart we want to create
+//         type: 'line',
 
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'Profit',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45]
-            },{
-                label: 'Index',
-                borderColor: 'rgb(146, 207, 191)',
-                data: [0, 7, 5, 3, 10, 17, 12]
-            }]
-        }
-    });
-    </script> -->
+//         // The data for our dataset
+//         data: {
+//             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+//             datasets: [{
+//                 label: 'Profit',
+//                 borderColor: 'rgb(255, 99, 132)',
+//                 data: [0, 10, 5, 2, 20, 30, 45]
+//             },{
+//                 label: 'Index',
+//                 borderColor: 'rgb(146, 207, 191)',
+//                 data: [0, 7, 5, 3, 10, 17, 12]
+//             }]
+//         }
+//     });
+//     </script> -->
 
-<script>
-    var ctx = document.getElementById('Model2').getContext('2d');
-    var chart3 = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
+// <script>
+//     var ctx = document.getElementById('Model2').getContext('2d');
+//     var chart3 = new Chart(ctx, {
+//         // The type of chart we want to create
+//         type: 'line',
 
-        // The data for our dataset
-        data: {
-            datasets: [{
-                label: 'Balance',
-                borderColor: 'rgb(255, 99, 132)',
-                pointStyle: 'circle',
-                pointRadius: 0,
-                lineTension: specialLineTension,
-                data: model2_total_multi_data
-            }]
-        },
+//         // The data for our dataset
+//         data: {
+//             datasets: [{
+//                 label: 'Balance',
+//                 borderColor: 'rgb(255, 99, 132)',
+//                 pointStyle: 'circle',
+//                 pointRadius: 0,
+//                 lineTension: specialLineTension,
+//                 data: model2_total_multi_data
+//             }]
+//         },
 
-        // Configuration options go here
-        options: {
-            scales: {
-                xAxes: [{
-                    type: 'time',
-                    time: 
-                        {
-                            // format: 'MM',
-                            // unit: 'month',
-                            // displayFormats: { month: 'MMM YYYY' }
-                            format: 'dd',
-                            unit: 'day',
-                            displayFormats: { month: 'MMM dd' }
-                        }
-                }]
-            }
-        }
-    });
-    </script>  
+//         // Configuration options go here
+//         options: {
+//             scales: {
+//                 xAxes: [{
+//                     type: 'time',
+//                     time: 
+//                         {
+//                             // format: 'MM',
+//                             // unit: 'month',
+//                             // displayFormats: { month: 'MMM YYYY' }
+//                             format: 'dd',
+//                             unit: 'day',
+//                             displayFormats: { month: 'MMM dd' }
+//                         }
+//                 }]
+//             }
+//         }
+//     });
+//     </script>  
 
 </body>
 
