@@ -698,10 +698,23 @@
         model2_totalest = model2_est[len-1];
         console.log(model2_totalrr_year)
         //table data
-        rr_balance_1mon_d = (total[len-1]/total[len-22]-1)*100
-        rr_model1_1mon_d = (model1_est[len-1]/model1_est[len-22]-1)*100
-        rr_model2_1mon_d = (model2_est[len-1]/model2_est[len-22]-1)*100
-        console.log("table_Data",rr_balance_1mon_d, rr_model1_1mon_d, rr_model2_1mon_d)
+        rr_balance_1mon_d = (total[len-1]/total[len-22]-1)*100;
+        rr_model1_1mon_d = (model1_est[len-1]/model1_est[len-22]-1)*100;
+        rr_model2_1mon_d = (model2_est[len-1]/model2_est[len-22]-1)*100;
+        dd_balance = [];
+        dd_model1 = [];
+        dd_model2 = [];
+        for(i=0; i<len-2; i++){
+            dd_balance.push((total[i+1]-total[i])*100/total[i]);
+            dd_model1.push((model1_est[i+1]-model1_est[i])*100/model1_est[i]);
+            dd_model2.push((model2_est[i+1]-model2_est[i])*100/model2_est[i]);
+        }
+        mdd_balance_1mon_d = Math.min.apply(null, dd_balance.slice(-22));
+        mdd_model1_1mon_d = Math.min.apply(null, dd_model1.slice(-22));
+        mdd_model2_1mon_d = Math.min.apply(null, dd_model2.slice(-22));
+        console.log(dd_balance, dd_model1, dd_model2)
+        console.log("MDD", mdd_balance_1mon_d, mdd_model1_1mon_d, mdd_model2_1mon_d)
+
 
         document.getElementById("lastupdate").innerHTML = moment(date[len-1]).format("MMM DD[,] YYYY");
         document.getElementById("DayRateReturn").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(dayrr)+"%";
@@ -744,6 +757,9 @@
         document.getElementById("rr_balance_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(rr_balance_1mon_d)+"%";
         document.getElementById("rr_model1_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(rr_model1_1mon_d)+"%";
         document.getElementById("rr_model2_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(rr_model2_1mon_d)+"%";
+        document.getElementById("mdd_balance_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(mdd_balance_1mon_d)+"%";
+        document.getElementById("mdd_model1_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(mdd_model1_1mon_d)+"%";
+        document.getElementById("mdd_model2_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(mdd_model2_1mon_d)+"%";
         
         
     </script>
@@ -902,9 +918,15 @@
         });
 
         //table data
-        rr_kosdaq_1mon_d = (kosdaq_data[len-1]/kosdaq_data[len-22]-1)*100
+        rr_kosdaq_1mon_d = (kosdaq_data[len-1]/kosdaq_data[len-22]-1)*100;
+        dd_kosdaq=[];
+        for(i=0; i<len-2; i++){
+            dd_kosdaq.push((kosdaq_data[i+1]-kosdaq_data[i])*100/kosdaq_data[i]);
+        }
+        mdd_kosdaq_1mon_d = Math.min.apply(null, dd_kosdaq.slice(-22));
         console.log(rr_kosdaq_1mon_d)
         document.getElementById("rr_kosdaq_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(rr_kosdaq_1mon_d)+"%";
+        document.getElementById("mdd_kosdaq_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(mdd_kosdaq_1mon_d)+"%";
 
     </script> 
 
