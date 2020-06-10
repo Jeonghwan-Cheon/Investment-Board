@@ -780,59 +780,59 @@
         
         var data = [];
 
-        var spreadsheetId = "1K5xSchNJyX7lfygCngh6Vc0tJpDwRdeDL28bhdziaJk",
-            url = "https://spreadsheets.google.com/feeds/list/" +
-                spreadsheetId +
-                "/2/public/basic?alt=json";
+        // var spreadsheetId = "1K5xSchNJyX7lfygCngh6Vc0tJpDwRdeDL28bhdziaJk",
+        //     url = "https://spreadsheets.google.com/feeds/list/" +
+        //         spreadsheetId +
+        //         "/2/public/basic?alt=json";
 
-        $.get({
-            url: url,
-            async: false,
-            success: function(response) {
-                console.log(response);
-                data = response.feed.entry;
-                var len = data.length,
-                    i = 0;
-                for (i = 1; i < len; i++) {
-                    date_data.push(new moment(data[i].title.$t));
-                    kosdaq_data.push(data[i].content.$t.split(' ')[1].replace(',', ''));
-                    kospi_data.push(data[i].content.$t.split(' ')[5].replace(',', ''));
-                    kosdaq150_data.push(data[i].content.$t.split(' ')[9].replace(',', ''));
-                    bio_data.push(data[i].content.$t.split(' ')[13].replace(',', ''));
-                    semicond_data.push(data[i].content.$t.split(' ')[17].replace(',', ''));
-                }
-                for (i = 0; i < len-1; i++) {
-                    var temp = {};
-                    temp['x'] = date_data[i];
-                    temp['y'] = kosdaq_data[i]/kosdaq_data[0];
-                    kosdaq_multi_data.push(temp);
-                }
-                for (i = 0; i < len-1; i++) {
-                    var temp = {};
-                    temp['x'] = date_data[i];
-                    temp['y'] = kospi_data[i]/kospi_data[0];
-                    kospi_multi_data.push(temp);
-                }
-                for (i = 0; i < len-1; i++) {
-                    var temp = {};
-                    temp['x'] = date_data[i];
-                    temp['y'] = kosdaq150_data[i]/kosdaq150_data[0];
-                    kosdaq150_multi_data.push(temp);
-                }
-                for (i = 0; i < len-1; i++) {
-                    var temp = {};
-                    temp['x'] = date_data[i];
-                    temp['y'] = bio_data[i]/bio_data[0];
-                    bio_multi_data.push(temp);
-                }
-                for (i = 0; i < len-1; i++) {
-                    var temp = {};
-                    temp['x'] = date_data[i];
-                    temp['y'] = semicond_data[i]/semicond_data[0];
-                    semicond_multi_data.push(temp);
-                }
-            }
-        });
+        // $.get({
+        //     url: url,
+        //     async: false,
+        //     success: function(response) {
+        //         console.log(response);
+        //         data = response.feed.entry;
+        //         var len = data.length,
+        //             i = 0;
+        //         for (i = 1; i < len; i++) {
+        //             date_data.push(new moment(data[i].title.$t));
+        //             kosdaq_data.push(data[i].content.$t.split(' ')[1].replace(',', ''));
+        //             kospi_data.push(data[i].content.$t.split(' ')[5].replace(',', ''));
+        //             kosdaq150_data.push(data[i].content.$t.split(' ')[9].replace(',', ''));
+        //             bio_data.push(data[i].content.$t.split(' ')[13].replace(',', ''));
+        //             semicond_data.push(data[i].content.$t.split(' ')[17].replace(',', ''));
+        //         }
+        //         for (i = 0; i < len-1; i++) {
+        //             var temp = {};
+        //             temp['x'] = date_data[i];
+        //             temp['y'] = kosdaq_data[i]/kosdaq_data[0];
+        //             kosdaq_multi_data.push(temp);
+        //         }
+        //         for (i = 0; i < len-1; i++) {
+        //             var temp = {};
+        //             temp['x'] = date_data[i];
+        //             temp['y'] = kospi_data[i]/kospi_data[0];
+        //             kospi_multi_data.push(temp);
+        //         }
+        //         for (i = 0; i < len-1; i++) {
+        //             var temp = {};
+        //             temp['x'] = date_data[i];
+        //             temp['y'] = kosdaq150_data[i]/kosdaq150_data[0];
+        //             kosdaq150_multi_data.push(temp);
+        //         }
+        //         for (i = 0; i < len-1; i++) {
+        //             var temp = {};
+        //             temp['x'] = date_data[i];
+        //             temp['y'] = bio_data[i]/bio_data[0];
+        //             bio_multi_data.push(temp);
+        //         }
+        //         for (i = 0; i < len-1; i++) {
+        //             var temp = {};
+        //             temp['x'] = date_data[i];
+        //             temp['y'] = semicond_data[i]/semicond_data[0];
+        //             semicond_multi_data.push(temp);
+        //         }
+        //     }
+        // });
 
         var specialLineTension = 0;
 
