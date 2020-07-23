@@ -298,10 +298,10 @@
                         </tr>
                         <tr align="center">
                             <td> 3-Month </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
+                            <td id='rr_balance_3mon'> - </td>
+                            <td id='rr_model1_3mon'> - </td>
+                            <td id='rr_model2_3mon'> - </td>
+                            <td id='rr_kosdaq_3mon'> - </td>
                         </tr>
                         <tr align="center">
                             <td> 6-Month </td>
@@ -340,10 +340,10 @@
                         </tr>
                         <tr align="center">
                             <td> 3-Month </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
+                            <td id='mdd_balance_3mon'> - </td>
+                            <td id='mdd_model1_3mon'> - </td>
+                            <td id='mdd_model2_3mon'> - </td>
+                            <td id='mdd_kosdaq_3mon'> - </td>
                         </tr>
                         <tr align="center">
                             <td> 6-Month </td>
@@ -702,6 +702,9 @@
         rr_balance_1mon_d = (total[len-1]/total[len-22]-1)*100;
         rr_model1_1mon_d = (model1_est[len-1]/model1_est[len-22]-1)*100;
         rr_model2_1mon_d = (model2_est[len-1]/model2_est[len-22]-1)*100;
+        rr_balance_3mon_d = (total[len-1]/total[len-65]-1)*100;
+        rr_model1_3mon_d = (model1_est[len-1]/model1_est[len-65]-1)*100;
+        rr_model2_3mon_d = (model2_est[len-1]/model2_est[len-65]-1)*100;
         dd_balance = [];
         dd_model1 = [];
         dd_model2 = [];
@@ -713,6 +716,9 @@
         mdd_balance_1mon_d = Math.min.apply(null, dd_balance.slice(-22));
         mdd_model1_1mon_d = Math.min.apply(null, dd_model1.slice(-22));
         mdd_model2_1mon_d = Math.min.apply(null, dd_model2.slice(-22));
+        mdd_balance_3mon_d = Math.min.apply(null, dd_balance.slice(-65));
+        mdd_model1_3mon_d = Math.min.apply(null, dd_model1.slice(-65));
+        mdd_model2_3mon_d = Math.min.apply(null, dd_model2.slice(-65));
         console.log(dd_balance, dd_model1, dd_model2)
         console.log("MDD", mdd_balance_1mon_d, mdd_model1_1mon_d, mdd_model2_1mon_d)
 
@@ -761,7 +767,12 @@
         document.getElementById("mdd_balance_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(mdd_balance_1mon_d)+"%";
         document.getElementById("mdd_model1_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(mdd_model1_1mon_d)+"%";
         document.getElementById("mdd_model2_1mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(mdd_model2_1mon_d)+"%";
-        
+        document.getElementById("rr_balance_3mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(rr_balance_3mon_d)+"%";
+        document.getElementById("rr_model1_3mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(rr_model1_3mon_d)+"%";
+        document.getElementById("rr_model2_3mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(rr_model2_3mon_d)+"%";
+        document.getElementById("mdd_balance_3mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(mdd_balance_3mon_d)+"%";
+        document.getElementById("mdd_model1_3mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(mdd_model1_3mon_d)+"%";
+        document.getElementById("mdd_model2_3mon").innerHTML = Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(mdd_model2_3mon_d)+"%";
         
     </script>
 
